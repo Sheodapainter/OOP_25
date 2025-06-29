@@ -1,40 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> //format pliku
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"> //przestrzenie nazw
+  <modelVersion>4.0.0</modelVersion> //wersja modelu
 
-  <groupId>pl.umcs.oop</groupId>
-  <artifactId>powtorzenieGUI</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>powtorzenieGUI</name>
+  <groupId>pl.umcs.oop</groupId> //Identyfikator grupy — zwykle odwrócona domena. Tu: organizacja lub pakiet główny.
+  <artifactId>powtorzenieGUI</artifactId> //Nazwa artefaktu (projektu), który będzie budowany (np. plik JAR).
+  <version>1.0-SNAPSHOT</version> //Wersja projektu. SNAPSHOT oznacza, że to wersja rozwojowa (niestabilna).
+  <name>powtorzenieGUI</name> //Opisowa nazwa projektu (opcjonalna, nie wpływa na budowanie).
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <junit.version>5.10.2</junit.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> //Ustawia kodowanie plików na UTF-8.
+    <junit.version>5.10.2</junit.version> //Przypisuje wersję JUnit do zmiennej ${junit.version}.
   </properties>
 
   <dependencies>
-    <dependency>
+    <dependency> //obsluga baz danych SQLite
       <groupId>org.xerial</groupId>
       <artifactId>sqlite-jdbc</artifactId>
       <version>3.41.2.2</version>
     </dependency>
-    <dependency>
+    <dependency> //komponenty GUI (przyciski, pola tekstowe itp.).
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
       <version>23</version>
     </dependency>
-    <dependency>
+    <dependency> //pliki .fxml
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-fxml</artifactId>
       <version>17.0.6</version>
     </dependency>
-<dependency>
+<dependency> //Dodatkowe komponenty GUI (np. specjalne okna dialogowe).
       <groupId>org.controlsfx</groupId>
       <artifactId>controlsfx</artifactId>
       <version>11.2.1</version>
-    </dependency><dependency>
+    </dependency>
+<dependency> //Biblioteka stylów CSS wzorowana na Bootstrapie.
       <groupId>org.kordamp.bootstrapfx</groupId>
       <artifactId>bootstrapfx-core</artifactId>
       <version>0.4.0</version>
@@ -51,6 +52,7 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+           //Dodają wsparcie dla testów jednostkowych z JUnit 5.
   </dependencies>
 
   <build>
@@ -63,7 +65,7 @@
           <source>23</source>
           <target>23</target>
         </configuration>
-      </plugin>
+      </plugin> //Ustawia wersję Javy na 23 do kompilacji (source) i wynikowego bytecode (target).
       <plugin>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-maven-plugin</artifactId>
@@ -84,6 +86,9 @@
           </execution>
         </executions>
       </plugin>
+             //Umożliwia uruchomienie aplikacji JavaFX przez mvn javafx:run.
+             //mainClass to pełna ścieżka do klasy uruchomieniowej (module/className) – w twoim przypadku to aplikacja GUI.
+             //Pozostałe opcje konfiguracyjne (jlink*, stripDebug, itd.) dotyczą budowania wersji standalone (modularnej) z jlink.
     </plugins>
   </build>
 </project>
