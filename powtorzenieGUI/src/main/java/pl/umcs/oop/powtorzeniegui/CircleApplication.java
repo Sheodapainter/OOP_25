@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class CircleApplication extends Application {
+public class CircleApplication extends Application { //tradycyjna funkcja main, patrz plusy
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CircleApplication.class.getResource("app-view.fxml"));
