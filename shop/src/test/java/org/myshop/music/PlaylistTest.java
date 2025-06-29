@@ -9,7 +9,7 @@ public class PlaylistTest {
     public void testNewPlaylistIsEmpty() {
         Playlist playlist = new Playlist();
 
-        assertTrue(playlist.isEmpty());
+        assertTrue(playlist.isEmpty()); //pusta moment po utworzeniu
     }
 
     @Test
@@ -18,7 +18,7 @@ public class PlaylistTest {
 
         playlist.add(new Song("Abc", "title1", 300));
 
-        assertEquals(1, playlist.size());
+        assertEquals(1, playlist.size()); //nowo stworzona playlista do ktorej dodano 1 playliste ma rozmiar 1
     }
 
     @Test
@@ -28,7 +28,7 @@ public class PlaylistTest {
 
         playlist.add(song);
 
-        assertEquals(song, playlist.getFirst());
+        assertEquals(song, playlist.getFirst()); //dodanie piosenki do playlisty doda nią do listy
     }
 
     @Test
@@ -37,7 +37,7 @@ public class PlaylistTest {
         Song song = new Song("art1", "title1", 100);
         playlist.add(song);
 
-        assertTrue(playlist.contains(new Song("art1", "title1", 100)));
+        assertTrue(playlist.contains(new Song("art1", "title1", 100))); //po dodaniu piosenki playlista zawiera piosenke
     }
 
     @Test
@@ -52,11 +52,11 @@ public class PlaylistTest {
         playlist.add(s3);
 
         assertEquals(s1, playlist.atSecond(0));
-        assertEquals(s1, playlist.atSecond(99));
+        assertEquals(s1, playlist.atSecond(99)); 
         assertEquals(s2, playlist.atSecond(100));
         assertEquals(s2, playlist.atSecond(199));
         assertEquals(s3, playlist.atSecond(200));
-        assertEquals(s3, playlist.atSecond(299));
+        assertEquals(s3, playlist.atSecond(299)); //w okreslonej sekundzie odtwarzania, aktualnie gra muzyka o danym id
     }
 
     @Test
@@ -69,7 +69,7 @@ public class PlaylistTest {
                 () -> playlist.atSecond(100)
         );
 
-        assertEquals("Playlista jest krótsza niż 100 sekund", e.getMessage());
+        assertEquals("Playlista jest krótsza niż 100 sekund", e.getMessage()); //metoda odpowiednio zwraca bledy
     }
 
 
