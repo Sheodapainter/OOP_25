@@ -2,7 +2,7 @@ package org.myshop.music;
 
 import java.util.ArrayList;
 
-public class Playlist extends ArrayList<Song> {
+public class Playlist extends ArrayList<Song> { //zachowuje się jak arraylist, ale można dodawać własne metody
     public Song atSecond(int seconds) {
         if (seconds < 0) {
             throw new IndexOutOfBoundsException("Czas nie może być ujemny: "+seconds);
