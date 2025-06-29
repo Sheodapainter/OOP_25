@@ -2,18 +2,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
-<VBox fx:controller="pl.umcs.oop.powtorzeniegui.Controller" xmlns:fx="http://javafx.com/fxml">
+//    To są instrukcje importu typów komponentów, z których korzystasz: Canvas, Button, Slider, VBox, Color, itd.
+
+<VBox fx:controller="pl.umcs.oop.powtorzeniegui.Controller" xmlns:fx="http://javafx.com/fxml"> 
+//    Główne opakowanie całego GUI — kontener VBox (układa elementy pionowo).
+//    fx:controller="..." — przypisuje klasę kontrolera, która obsługuje zdarzenia (czyli Twoją klasę Controller.java).
+//    xmlns:fx — deklaruje przestrzeń nazw FXML.
+
     <TitledPane animated="false" collapsible="false" text="Connection" VBox.vgrow="NEVER">
+    //    TitledPane — z tytułem Connection, nie da się go zwinąć.
+
         <HBox alignment="CENTER" spacing="5.0">
+        //    Wewnątrz — poziome ułożenie elementów (HBox), wyrównane do środka, z odstępem 5.0.
+
             <Label text="Address"/>
             <TextField fx:id="addressField" text="localhost"/>
             <Label text="Port"/>
             <TextField fx:id="portField" text="5000"/>
             <Button mnemonicParsing="false" onAction="#onStartServerClicked" text="Start Server &amp; Connect"/>
             <Button mnemonicParsing="false" onAction="#onConnectClicked" text="Connect"/>
+            //    TextField fx:id="addressField" — wiąże pole z Controller.java (dostępne jako @FXML TextField addressField)
+            //    Domyślne wartości: localhost, 5000
+            //    przyciski: Pierwszy wywołuje metodę onStartServerClicked(), ale tylko wyświetla komunikat (bo serwer działa osobno).
+            //    przyciski: Drugi wywołuje onConnectClicked(), czyli łączy się z serwerem (tworzy ServerThread).
+
         </HBox>
     </TitledPane>
     <TitledPane animated="false" collapsible="false" maxHeight="Infinity" text="Canvas" VBox.vgrow="ALWAYS">
+    //    Sekcja Canvas zajmuje resztę dostępnego miejsca (VBox.vgrow="ALWAYS").
+
         <VBox alignment="TOP_CENTER" maxHeight="Infinity" spacing="5.0">
             <HBox alignment="CENTER" spacing="5.0">
                 <Label text="Color"/>
@@ -23,15 +40,26 @@
                                blue="0.3333333432674408"/>
                     </value>
                 </ColorPicker>
+                //    ColorPicker pozwala wybrać kolor kropki — wartość domyślna: zielonkawy odcień.
                 <Label text="Radius"/>
                 <Slider fx:id="radiusSlider" blockIncrement="5.0" showTickLabels="true" showTickMarks="true"
                         value="5.0" HBox.hgrow="ALWAYS"/>
+                //    Slider do ustawienia promienia kropki.
+                //    blockIncrement="5.0" — zmiana co 5 jednostek.
+                //    value="5.0" — domyślny promień to 5.
+                //    showTickMarks i showTickLabels — pokazuje podziałkę i liczby.
+
             </HBox>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
                    prefHeight="514.0" prefWidth="514.0"
                   style="-fx-background-color: white; -fx-border-color: black;">
                 <Canvas onMouseClicked="#onMouseClicked" fx:id="canvas" height="512.0" layoutX="1.0" layoutY="1.0" width="512.0"/>
             </Pane>
+            //    Pane to kontener na Canvas.
+            //    Canvas to obszar do rysowania.
+            //    Gdy klikniesz, wywoła metodę onMouseClicked(...) z kontrolera.
+            //    Ma fx:id="canvas" więc kontroler może go modyfikować (canvas.getGraphicsContext2D()).
+
         </VBox>
     </TitledPane>
 </VBox>
